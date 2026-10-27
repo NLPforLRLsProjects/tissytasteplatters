@@ -24,7 +24,8 @@ not submit or store enquiries itself.
 
 ## Business details to confirm before launch
 
-- Confirm the contact phone and email shown on the site.
+- Confirm the contact phone shown on the site. The current contact email is
+  `dikgaletiisetso7@gmail.com`.
 - The site uses **Benoni East AH, Gauteng** as the service area based on the
   Facebook page description. It does not publish an unverified street address.
 - Confirm delivery, collection, booking, and privacy terms with the business.

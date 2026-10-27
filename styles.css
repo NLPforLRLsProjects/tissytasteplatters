@@ -2,5 +2,7 @@
 
 button:disabled{cursor:not-allowed;opacity:.5}
 a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.form-help{margin:-10px 0 20px;color:var(--muted);font-size:14px}
+.form-status a{font-weight:700;text-underline-offset:3px}
 .form-status{min-height:1.5em}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.button{transition:none}}

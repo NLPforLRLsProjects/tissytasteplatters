@@ -220,11 +220,18 @@ function setUpOrderForm() {
   getElement('date').min = `${year}-${month}-${day}`;
   getElement('year').textContent = String(year);
 
-  getElement('orderForm').addEventListener('submit', event => {
+  const form = getElement('orderForm');
+  const status = getElement('formStatus');
+
+  form.addEventListener('invalid', () => {
+    status.textContent = 'Please complete all required fields and tick the consent box.';
+  }, true);
+
+  form.addEventListener('submit', event => {
     event.preventDefault();
 
     if (basket.size === 0) {
-      getElement('formStatus').textContent =
+      status.textContent =
         'Please add at least one catalogue option to your enquiry.';
       getElement('catalogue').scrollIntoView({ behavior: 'smooth' });
       return;
@@ -255,13 +262,24 @@ function setUpOrderForm() {
 
     const whatsappUrl =
       `https://wa.me/${BUSINESS_WHATSAPP}?text=${encodeURIComponent(message)}`;
-    getElement('formStatus').textContent =
-      'Opening WhatsApp. Review and send your message to submit the enquiry.';
+    const whatsappWindow = window.open(whatsappUrl, '_blank');
 
-    const whatsappWindow = window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
-    if (!whatsappWindow) {
-      window.location.href = whatsappUrl;
+    if (whatsappWindow) {
+      whatsappWindow.opener = null;
+      status.textContent = 'WhatsApp opened. Review your message and press Send.';
+      return;
     }
+
+    status.replaceChildren(
+      document.createTextNode('Your browser blocked the WhatsApp window. '),
+      Object.assign(document.createElement('a'), {
+        href: whatsappUrl,
+        target: '_blank',
+        rel: 'noopener noreferrer',
+        textContent: 'Open WhatsApp'
+      }),
+      document.createTextNode(' and press Send to submit your enquiry.')
+    );
   });
 }
 
