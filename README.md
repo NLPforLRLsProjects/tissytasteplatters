@@ -35,6 +35,15 @@ Upload `index.html`, `styles.css`, `script.js`, and the `assets` folder to a
 static host such as Netlify, Cloudflare Pages, or GitHub Pages. No secrets or
 credentials belong in these client-side files.
 
+### Netlify
+
+1. Open the [Netlify GitHub import link](https://app.netlify.com/start/deploy?repository=https://github.com/NLPforLRLsProjects/tissytasteplatters).
+2. Sign in to Netlify and authorize access to the GitHub repository.
+3. Keep the build command empty and use `.` as the publish directory. The
+   included `netlify.toml` sets the publish directory to the project root.
+4. Choose **Deploy site**. Netlify will publish the site and redeploy future
+   pushes to the `main` branch automatically.
+
 ## Project files
 
 - `index.html` — page structure and content
@@ -42,3 +51,4 @@ credentials belong in these client-side files.
 - `script.js` — catalogue, basket, validation, and WhatsApp message handoff
 - `assets/logo.jpg` — supplied brand artwork, shown in the header
 - `assets/platters.jpg` — supplied platter photo, shown in the homepage hero
+- `netlify.toml` — static-site publish directory
